@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>Basic carousel test</title>
+	<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenLite.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/plugins/CSSPlugin.min.js"></script>
+    <script src="js/carousel.js"></script>
+  </head>
+    
+  <body>
+      
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <div class="navbar-brand" href="#">Basic Carousel Test</div>
+            </div>
+        </div>
+    </nav>
+      
+    <div ng-app="carouselApp" ng-controller="carouselController" class="container-fluid" id="mainHolder">
+      <div id="wrapper">
+        <div class="carouselContainer">
+            <div class="childItem" ng-repeat="items in carouselItems" ng-click="onItemClick(this);">
+                <img ng-src = "{{ items.img }}" class="itemImage img-thumbnail" alt="{{ items.alt }}">
+                    <div class="text-left">
+                        <div><h1><span class="glyphicon glyphicon-menu-right"></span>{{items.title}}</h1></div>
+                        <div><h3>{{ items.content }}</h3></div>
+                    </div>
+                </div>
+            </div>
+		</div>
+        <div class="container controls">    
+            <button type="button" class="btn btn-default" ng-click="arrowClicked('left');"><span class="glyphicon glyphicon-menu-left"></span></button>     <a ng-model="pageArray" ng-repeat="pages in pageArray" ng-click="highlight($index);" ng-class="{'active':getCurrentIndex($index)}" class = "dots"></a>
+            <button type="button" class="btn btn-default" ng-click="arrowClicked('right');"><span class="glyphicon glyphicon-menu-right"></span></button>
+        </div> 
+    </div>
+	
+</body>
+</html>
+				
+
+			
