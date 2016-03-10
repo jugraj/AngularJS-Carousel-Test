@@ -12,15 +12,20 @@ carouselApp.controller('carouselController',function($scope,$document,$http,$log
         .success(function(result){
             $scope.numItemsVisible = result.data.carousel.format.paging;
             $scope.numOfPages = Math.ceil(result.data.carousel.items.length/$scope.numItemsVisible);
-            
             $scope.carouselItems = result.data.carousel.items;
             
             // **** push 4 items at a time into the array:
             for(var j=0; j<$scope.numOfPages; j++){
                 var itemsObj = [];
                 for(var i=0; i<$scope.numItemsVisible;i++){
-                    itemsObj.push($scope.carouselItems[itemsObj.length])
+                    var obj = {};
+                    obj.name = "childItem_"+itemsObj.length;
+                    $log.info("childItem_"+itemsObj.length);
+                    obj.item = $scope.carouselItems[itemsObj.length]
+                    itemsObj.push(obj);
                 }
+                
+                $log.info(itemsObj.length)
                 // push into pageArray - this determnines the pagination
                 $scope.pageArray.push(itemsObj);
             }
@@ -31,10 +36,12 @@ carouselApp.controller('carouselController',function($scope,$document,$http,$log
             // in case there is an error
         });
     
-    $scope.onItemClick - function(evt){
-        $log.info(evt);
+    // **** URL Clicks from items:
+    $scope.onItemClick = function(url){
+       window.open(url);
     }
     
+    // **** LEFT/RIGHT Arrow clicks:
     $scope.arrowClicked = function(dir){
         switch(dir){
             case "right":
@@ -54,18 +61,23 @@ carouselApp.controller('carouselController',function($scope,$document,$http,$log
         $scope.highlight($scope.currentIndex);
     }
     
+    // **** Gets the current index to set states for dots/pagination:
     $scope.getCurrentIndex = function(index){
         var value = $scope.currentIndex === index;
-        //$log.log('what is the value ' + value)
         return value;
     }
     
-        
+    // **** sets the position of ChildItems/images set in div:
+    $scope.setChildIndex = function(index){
+        var value = index * 225 +'px';
+        return value;
+    }
+    
+    // **** HIGHLIGHT - take to the carousel part of the page as per the index:
     $scope.highlight = function(index){
+        $scope.currentIndex = index; 
         var element = document.getElementsByClassName("carouselContainer");
         TweenLite.to(element,1,{left:-900*index,ease:Cubic.easeInOut});
-        $scope.currentIndex = index;
-        
     }
 });
 

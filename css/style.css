@@ -25,7 +25,7 @@ body {
     height: 250px;
     margin: 0 auto;
     overflow: hidden;
-    background-color: antiquewhite;
+    background-color: white;
     font-size: 20px;
 
 }
@@ -37,15 +37,25 @@ body {
 
 }
 .childItem {
+    position: absolute;
     padding:0px 10px 0px 0px;
-
     width: 225px;
-    
-
-    float: left;
     text-align: center;
     font-size: 60px;
     cursor: pointer;
+    opacity: 1;
+      -webkit-transition: opacity .4s;
+    -o-transition: opacity .4s;
+    -ms-transition: opacity .4s;
+    transition: opacity .4s;
+}
+
+.childItem:hover{
+    opacity: .8;
+    -webkit-transition: opacity .4s;
+    -o-transition: opacity .4s;
+    -ms-transition: opacity .4s;
+    transition: opacity .4s;
 }
 
 .childItem h1{

@@ -21,10 +21,10 @@
         </div>
     </nav>
       
-    <div ng-app="carouselApp" ng-controller="carouselController" class="container-fluid" id="mainHolder">
+    <div ng-app="carouselApp" ng-controller="carouselController" class="container" id="mainHolder">
       <div id="wrapper">
         <div class="carouselContainer">
-            <div class="childItem" ng-repeat="items in carouselItems" ng-click="onItemClick(this);">
+            <div class="childItem" ng-repeat="items in carouselItems" ng-click="onItemClick(items.url); " id="{{ 'childItem_' + $index }}" style="left:{{ setChildIndex($index)}}">
                 <img ng-src = "{{ items.img }}" class="itemImage img-thumbnail" alt="{{ items.alt }}">
                     <div class="text-left">
                         <div><h1><span class="glyphicon glyphicon-menu-right"></span>{{items.title}}</h1></div>
@@ -34,7 +34,7 @@
             </div>
 		</div>
         <div class="container controls">    
-            <button type="button" class="btn btn-default" ng-click="arrowClicked('left');"><span class="glyphicon glyphicon-menu-left"></span></button>     <a ng-model="pageArray" ng-repeat="pages in pageArray" ng-click="highlight($index);" ng-class="{'active':getCurrentIndex($index)}" class = "dots"></a>
+            <button type="button" class="btn btn-default" ng-click="arrowClicked('left');"><span class="glyphicon glyphicon-menu-left"></span></button>     <a ng-repeat="pages in pageArray" ng-click="highlight($index);" ng-class="{'active':getCurrentIndex($index)}" class = "dots"></a>
             <button type="button" class="btn btn-default" ng-click="arrowClicked('right');"><span class="glyphicon glyphicon-menu-right"></span></button>
         </div> 
     </div>
