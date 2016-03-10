@@ -1,6 +1,6 @@
 var carouselApp = angular.module('carouselApp',[]);
 
-
+// **** CONTROLLER:
 carouselApp.controller('carouselController',function($scope,$document,$http,$log){
     
     $scope.numItemsVisible; // 4 at a time based on design
