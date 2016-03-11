@@ -21,10 +21,10 @@
         </div>
     </nav>
       
-    <div ng-app="carouselApp" ng-controller="carouselController" class="container" id="mainHolder">
+    <div ng-app="carouselApp" ng-controller="carouselController" id="mainHolder" class="container-fluid">
       <div id="wrapper">
-        <div class="carouselContainer">
-            <div class="childItem" ng-repeat="items in carouselItems" ng-click="onItemClick(items.url); " id="{{ 'childItem_' + $index }}" style="left:{{ setChildIndex($index)}}">
+        <div id="carouselContainer">
+            <div class="childItem" ng-repeat="items in carouselItems" ng-click="onItemClick(items.url); " id = "{{ 'childItem_' + $index }}" style="left:{{ setChildIndex($index)}}">
                 <img ng-src = "{{ items.img }}" class="itemImage img-thumbnail" alt="{{ items.alt }}">
                     <div class="text-left">
                         <div><h1><span class="glyphicon glyphicon-menu-right"></span>{{items.title}}</h1></div>

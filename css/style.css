@@ -29,10 +29,9 @@ body {
     font-size: 20px;
 
 }
-.carouselContainer {
-    position: absolute;
-    width: 5950px;
-    background-color: none;
+#carouselContainer {
+    position: relative;
+    background-color: yellow;
     margin:10px;
 
 }
@@ -40,6 +39,7 @@ body {
     position: absolute;
     padding:0px 10px 0px 0px;
     width: 225px;
+    top:250px;
     text-align: center;
     font-size: 60px;
     cursor: pointer;
